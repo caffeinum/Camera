@@ -21,7 +21,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         // Get an instance of the AVCaptureDevice class to initialize a device object and provide the video as the media type parameter
-        let captureDevice = AVCaptureDevice.default(for: AVMediaType.video)
+        let captureDevice = AVCaptureDevice.default(.builtInWideAngleCamera, for: AVMediaType.video, position: .front)
         
         do {
             // Get an instance of the AVCaptureDeviceInput class using the previous deivce object
@@ -49,10 +49,34 @@ class ViewController: UIViewController {
     
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewDidLayoutSubviews() {
+        videoPreviewLayer?.frame = view.bounds
+
+        let app = UIApplication.shared
+        if let previewLayer = videoPreviewLayer?.connection, previewLayer.isVideoOrientationSupported {
+            previewLayer.videoOrientation = app.statusBarOrientation.videoOrientation ?? .portrait
+        }
     }
 
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        coordinator.animate(alongsideTransition: nil) { (_) in
+            UIView.setAnimationsEnabled(true)
+        }
+        UIView.setAnimationsEnabled(false)
+        super.viewWillTransition(to: size, with: coordinator)
+    }
+
+}
+
+extension UIInterfaceOrientation {
+    var videoOrientation: AVCaptureVideoOrientation? {
+        switch self {
+        case .portraitUpsideDown: return .portraitUpsideDown
+        case .landscapeRight: return .landscapeRight
+        case .landscapeLeft: return .landscapeLeft
+        case .portrait: return .portrait
+        default: return nil
+        }
+    }
 }
 
