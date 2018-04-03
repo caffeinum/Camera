@@ -433,7 +433,7 @@
 				DEVELOPMENT_TEAM = AE86HBQRXP;
 				INFOPLIST_FILE = Camera/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.rizwankce.Camera;
+				PRODUCT_BUNDLE_IDENTIFIER = com.caffeinum.rizwankce.Camera;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
@@ -447,7 +447,7 @@
 				DEVELOPMENT_TEAM = AE86HBQRXP;
 				INFOPLIST_FILE = Camera/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.rizwankce.Camera;
+				PRODUCT_BUNDLE_IDENTIFIER = com.caffeinum.rizwankce.Camera;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
