@@ -26,21 +26,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vC0-bM-fCY">
-                                <rect key="frame" x="0.0" y="295" width="667" height="80"/>
+                                <rect key="frame" x="0.0" y="0.0" width="80" height="375"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1aS-ZT-6vo">
-                                        <rect key="frame" x="458.5" y="11" width="58.5" height="58.5"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="60" id="BBw-Cc-O3P"/>
-                                            <constraint firstAttribute="width" secondItem="1aS-ZT-6vo" secondAttribute="height" multiplier="1:1" id="Q4Q-VG-3FR"/>
-                                        </constraints>
-                                        <state key="normal" image="switch-video-on"/>
-                                        <connections>
-                                            <action selector="switchCameras" destination="BYZ-38-t0r" eventType="touchUpInside" id="W6M-2j-dLG"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bbg-N1-RNK">
-                                        <rect key="frame" x="150" y="11.5" width="58.5" height="58.5"/>
+                                        <rect key="frame" x="14" y="222.5" width="52.5" height="52.5"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="lessThanOrEqual" constant="60" id="GPw-oW-yfN"/>
                                             <constraint firstAttribute="width" secondItem="Bbg-N1-RNK" secondAttribute="height" multiplier="1:1" id="Wk5-Wb-RiP"/>
@@ -50,17 +39,34 @@
                                             <action selector="startStream" destination="BYZ-38-t0r" eventType="touchUpInside" id="3hl-dg-GAb"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1aS-ZT-6vo">
+                                        <rect key="frame" x="14" y="100" width="52.5" height="52.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="60" id="BBw-Cc-O3P"/>
+                                            <constraint firstAttribute="width" secondItem="1aS-ZT-6vo" secondAttribute="height" multiplier="1:1" id="Q4Q-VG-3FR"/>
+                                        </constraints>
+                                        <state key="normal" image="switch-video-on"/>
+                                        <connections>
+                                            <action selector="switchCameras" destination="BYZ-38-t0r" eventType="touchUpInside" id="W6M-2j-dLG"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="0.20679045376712329" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="1aS-ZT-6vo" firstAttribute="leading" secondItem="Bbg-N1-RNK" secondAttribute="trailing" constant="250" id="51w-QC-q6p"/>
-                                    <constraint firstItem="Bbg-N1-RNK" firstAttribute="centerY" secondItem="vC0-bM-fCY" secondAttribute="centerY" id="Fd1-ew-l9x"/>
-                                    <constraint firstAttribute="trailing" secondItem="1aS-ZT-6vo" secondAttribute="trailing" constant="150" id="MYc-A7-EH9"/>
-                                    <constraint firstItem="1aS-ZT-6vo" firstAttribute="centerY" secondItem="vC0-bM-fCY" secondAttribute="centerY" id="S03-sa-x66"/>
+                                    <constraint firstAttribute="bottom" secondItem="Bbg-N1-RNK" secondAttribute="bottom" constant="100" id="7Y4-nz-FRG"/>
+                                    <constraint firstAttribute="width" constant="80" id="O7f-Km-eu8"/>
+                                    <constraint firstItem="1aS-ZT-6vo" firstAttribute="top" secondItem="vC0-bM-fCY" secondAttribute="top" constant="100" id="SZd-9J-rlE"/>
                                     <constraint firstItem="1aS-ZT-6vo" firstAttribute="width" secondItem="Bbg-N1-RNK" secondAttribute="width" id="Y8d-LD-mZT"/>
-                                    <constraint firstItem="Bbg-N1-RNK" firstAttribute="leading" secondItem="vC0-bM-fCY" secondAttribute="leading" constant="150" id="aLy-i3-b7L"/>
                                     <constraint firstAttribute="height" constant="80" id="cjo-wg-ejv"/>
+                                    <constraint firstItem="Bbg-N1-RNK" firstAttribute="top" secondItem="1aS-ZT-6vo" secondAttribute="bottom" constant="70" id="d4o-cY-vBa"/>
+                                    <constraint firstItem="Bbg-N1-RNK" firstAttribute="centerX" secondItem="vC0-bM-fCY" secondAttribute="centerX" id="p1p-qr-qA4"/>
+                                    <constraint firstItem="1aS-ZT-6vo" firstAttribute="centerX" secondItem="vC0-bM-fCY" secondAttribute="centerX" id="yla-T8-8t5"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="cjo-wg-ejv"/>
+                                    </mask>
+                                </variation>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -72,7 +78,13 @@
                             <constraint firstItem="yb9-CX-PyI" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="E0S-tI-7NN"/>
                             <constraint firstItem="yb9-CX-PyI" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="dsG-lP-dR9"/>
                             <constraint firstAttribute="trailing" secondItem="yb9-CX-PyI" secondAttribute="trailing" id="eaI-pM-EiX"/>
+                            <constraint firstItem="vC0-bM-fCY" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="wIt-8p-Rk1"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="CJl-gP-Vz4"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="previewView" destination="yb9-CX-PyI" id="YSF-Cm-ikr"/>
