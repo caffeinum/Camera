@@ -13,49 +13,26 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var previewView: UIView!
     
+    @IBOutlet weak var streamButton: UIButton!
+    @IBOutlet weak var switchCamera: UIButton!
+    
+    var streamView: UIView?
     var captureSession: AVCaptureSession?
     var videoPreviewLayer: AVCaptureVideoPreviewLayer?
-
+    
+    let streamer = HaishinStreamer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Get an instance of the AVCaptureDevice class to initialize a device object and provide the video as the media type parameter
-        let captureDevice = AVCaptureDevice.default(.builtInWideAngleCamera, for: AVMediaType.video, position: .front)
+        startStream()
         
-        do {
-            // Get an instance of the AVCaptureDeviceInput class using the previous deivce object
-            let input = try AVCaptureDeviceInput(device: captureDevice!)
-            
-            // Initialize the captureSession object
-            captureSession = AVCaptureSession()
-            
-            // Set the input devcie on the capture session
-            captureSession?.addInput(input)
-            
-            //Initialise the video preview layer and add it as a sublayer to the viewPreview view's layer
-            videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession!)
-            videoPreviewLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
-            videoPreviewLayer?.frame = view.layer.bounds
-            previewView.layer.addSublayer(videoPreviewLayer!)
-            
-            //start video capture
-            captureSession?.startRunning()
-        } catch {
-            //If any error occurs, simply print it out
-            print(error)
-            return
-        }
-    
+        streamView = streamer.getStreamView(frame: view.bounds)
+        view.insertSubview(streamView!, belowSubview: previewView)
     }
 
     override func viewDidLayoutSubviews() {
-        videoPreviewLayer?.frame = view.bounds
-
-        let app = UIApplication.shared
-        if let previewLayer = videoPreviewLayer?.connection, previewLayer.isVideoOrientationSupported {
-            previewLayer.videoOrientation = app.statusBarOrientation.videoOrientation ?? .portrait
-        }
+        streamView?.frame = view.bounds
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -66,6 +43,14 @@ class ViewController: UIViewController {
         super.viewWillTransition(to: size, with: coordinator)
     }
 
+    @IBAction func switchCameras() {
+//        streamer
+        streamer.switchCamera()
+    }
+    
+    @IBAction func startStream() {
+        streamer.stream()
+    }
 }
 
 extension UIInterfaceOrientation {

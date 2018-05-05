@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -18,17 +18,49 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yb9-CX-PyI">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vC0-bM-fCY">
+                                <rect key="frame" x="0.0" y="295" width="667" height="80"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1aS-ZT-6vo">
+                                        <rect key="frame" x="333.5" y="25" width="333.5" height="30"/>
+                                        <state key="normal" title="Switch"/>
+                                        <connections>
+                                            <action selector="switchCameras" destination="BYZ-38-t0r" eventType="touchUpInside" id="W6M-2j-dLG"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bbg-N1-RNK">
+                                        <rect key="frame" x="0.0" y="25" width="333.5" height="30"/>
+                                        <state key="normal" title="Stream"/>
+                                        <connections>
+                                            <action selector="startStream" destination="BYZ-38-t0r" eventType="touchUpInside" id="3hl-dg-GAb"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="0.20679045376712329" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="1aS-ZT-6vo" secondAttribute="trailing" id="25i-TL-PJP"/>
+                                    <constraint firstItem="1aS-ZT-6vo" firstAttribute="leading" secondItem="Bbg-N1-RNK" secondAttribute="trailing" id="51w-QC-q6p"/>
+                                    <constraint firstItem="Bbg-N1-RNK" firstAttribute="centerY" secondItem="vC0-bM-fCY" secondAttribute="centerY" id="Fd1-ew-l9x"/>
+                                    <constraint firstAttribute="trailing" secondItem="1aS-ZT-6vo" secondAttribute="trailing" id="MYc-A7-EH9"/>
+                                    <constraint firstItem="1aS-ZT-6vo" firstAttribute="centerY" secondItem="vC0-bM-fCY" secondAttribute="centerY" id="S03-sa-x66"/>
+                                    <constraint firstItem="1aS-ZT-6vo" firstAttribute="width" secondItem="Bbg-N1-RNK" secondAttribute="width" id="Y8d-LD-mZT"/>
+                                    <constraint firstItem="Bbg-N1-RNK" firstAttribute="leading" secondItem="vC0-bM-fCY" secondAttribute="leading" id="aLy-i3-b7L"/>
+                                    <constraint firstAttribute="height" constant="80" id="cjo-wg-ejv"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="vC0-bM-fCY" secondAttribute="bottom" id="0UT-i8-HRb"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="yb9-CX-PyI" secondAttribute="bottom" id="2S8-jD-z03"/>
+                            <constraint firstAttribute="trailing" secondItem="vC0-bM-fCY" secondAttribute="trailing" id="CJl-gP-Vz4"/>
+                            <constraint firstItem="vC0-bM-fCY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ClV-MH-mcQ"/>
                             <constraint firstItem="yb9-CX-PyI" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="E0S-tI-7NN"/>
                             <constraint firstItem="yb9-CX-PyI" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="dsG-lP-dR9"/>
                             <constraint firstAttribute="trailing" secondItem="yb9-CX-PyI" secondAttribute="trailing" id="eaI-pM-EiX"/>
@@ -36,6 +68,8 @@
                     </view>
                     <connections>
                         <outlet property="previewView" destination="yb9-CX-PyI" id="YSF-Cm-ikr"/>
+                        <outlet property="streamButton" destination="Bbg-N1-RNK" id="20E-17-93a"/>
+                        <outlet property="switchCamera" destination="1aS-ZT-6vo" id="QQv-2V-xY7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
