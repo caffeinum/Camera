@@ -78,6 +78,27 @@ class HaishinStreamer {
         rtmpStream.orientation = .landscapeLeft
         rtmpStream.syncOrientation = true
         rtmpConnection.connect("rtmp://phystech.tv/studio107")
-        rtmpStream.publish("cam")
+        
+        let key = String.random(length: 4)
+        
+        print("stream key =", key)
+        rtmpStream.publish( key )
+    }
+}
+
+extension String {
+    static func random(length: Int) -> String {
+        let letters : NSString = "abcdefghijklmnopqrstuvwxyz"
+        let len = UInt32(letters.length)
+        
+        var randomString = ""
+        
+        for _ in 0 ..< length {
+            let rand = arc4random_uniform(len)
+            var nextChar = letters.character(at: Int(rand))
+            randomString += NSString(characters: &nextChar, length: 1) as String
+        }
+        
+        return randomString
     }
 }
