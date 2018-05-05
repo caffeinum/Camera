@@ -77,9 +77,9 @@ class HaishinStreamer {
 
         rtmpStream.orientation = .landscapeLeft
         rtmpStream.syncOrientation = true
-        rtmpConnection.connect("rtmp://phystech.tv/studio107")
+        rtmpConnection.connect("rtmp://phystech.tv/sources")
         
-        let key = String.random(length: 4)
+        let key = String.random(length: 2)
         
         print("stream key =", key)
         rtmpStream.publish( key )
