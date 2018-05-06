@@ -8,7 +8,6 @@
 
 import Foundation
 import AVFoundation
-import HaishinKit
 import LFLiveKit
 
 @objc class LVLiveStreamer: NSObject {
