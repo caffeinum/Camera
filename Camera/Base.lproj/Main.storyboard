@@ -29,25 +29,39 @@
                                 <rect key="frame" x="0.0" y="0.0" width="80" height="375"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bbg-N1-RNK">
-                                        <rect key="frame" x="14" y="222.5" width="52.5" height="52.5"/>
+                                        <rect key="frame" x="17.5" y="215" width="45" height="60"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="60" id="GPw-oW-yfN"/>
+                                            <constraint firstAttribute="height" constant="60" id="GPw-oW-yfN"/>
                                             <constraint firstAttribute="width" secondItem="Bbg-N1-RNK" secondAttribute="height" multiplier="1:1" id="Wk5-Wb-RiP"/>
                                         </constraints>
-                                        <state key="normal" image="video-camera"/>
+                                        <state key="normal" title="cam2">
+                                            <color key="titleColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="Wk5-Wb-RiP"/>
+                                            </mask>
+                                        </variation>
                                         <connections>
-                                            <action selector="startStream" destination="BYZ-38-t0r" eventType="touchUpInside" id="3hl-dg-GAb"/>
+                                            <action selector="startStream2" destination="BYZ-38-t0r" eventType="touchUpInside" id="Frx-wQ-Ffd"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1aS-ZT-6vo">
-                                        <rect key="frame" x="14" y="100" width="52.5" height="52.5"/>
+                                        <rect key="frame" x="17.5" y="100" width="45" height="60"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="60" id="BBw-Cc-O3P"/>
+                                            <constraint firstAttribute="height" constant="60" id="BBw-Cc-O3P"/>
                                             <constraint firstAttribute="width" secondItem="1aS-ZT-6vo" secondAttribute="height" multiplier="1:1" id="Q4Q-VG-3FR"/>
                                         </constraints>
-                                        <state key="normal" image="switch-video-on"/>
+                                        <state key="normal" title="cam1">
+                                            <color key="titleColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="Q4Q-VG-3FR"/>
+                                            </mask>
+                                        </variation>
                                         <connections>
-                                            <action selector="switchCameras" destination="BYZ-38-t0r" eventType="touchUpInside" id="W6M-2j-dLG"/>
+                                            <action selector="startStream1" destination="BYZ-38-t0r" eventType="touchUpInside" id="Drr-V0-SI4"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -65,6 +79,7 @@
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="cjo-wg-ejv"/>
+                                        <exclude reference="d4o-cY-vBa"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -88,17 +103,13 @@
                     </view>
                     <connections>
                         <outlet property="previewView" destination="yb9-CX-PyI" id="YSF-Cm-ikr"/>
-                        <outlet property="streamButton" destination="Bbg-N1-RNK" id="20E-17-93a"/>
-                        <outlet property="switchCamera" destination="1aS-ZT-6vo" id="QQv-2V-xY7"/>
+                        <outlet property="stream1" destination="1aS-ZT-6vo" id="Vda-6q-r55"/>
+                        <outlet property="stream2" destination="Bbg-N1-RNK" id="1lk-em-AUU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="32.799999999999997" y="38.23088455772114"/>
+            <point key="canvasLocation" x="31.934032983508249" y="37.600000000000001"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="switch-video-on" width="170" height="170"/>
-        <image name="video-camera" width="170" height="170"/>
-    </resources>
 </document>

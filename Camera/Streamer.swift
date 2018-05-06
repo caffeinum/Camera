@@ -13,13 +13,9 @@ import LFLiveKit
 @objc class LVLiveStreamer: NSObject {
     var session: LFLiveSession!
 
-    var streamInfo: LFLiveStreamInfo {
+    func getStreamInfo(rtmpURL: String) -> LFLiveStreamInfo {
         let info = LFLiveStreamInfo()
-
-        let key = String.random(length: 2)
-
-        print("[STREAM] key =", key)
-        info.url = "rtmp://phystech.tv/sources/\(key)"
+        info.url = rtmpURL
         return info
     }
 
@@ -42,33 +38,22 @@ import LFLiveKit
         videoConfiguration.sessionPreset = .captureSessionPreset720x1280
         
         session = LFLiveSession(audioConfiguration: audioConfiguration, videoConfiguration: videoConfiguration, captureType: .captureMaskAll)
-        session.delegate = self
     }
     
-    func stream() {
-        session.running = true
-//        session.preView = UIView()
+    func stream(to key: String? = nil) {
+        let key = key ?? String.random(length: 2)
         
+        print("[STREAM] key =", key)
+
+        let url = "rtmp://phystech.tv/sources/\(key)"
+        let streamInfo = getStreamInfo(rtmpURL: url)
+        
+        session.running = true
         session.startLive(streamInfo)
     }
     
     func stop() {
         session.stopLive()
-    }
-    
-    func getStreamView(frame: CGRect) -> UIView {
-        return session.preView
-    }
-}
-
-extension LVLiveStreamer: LFLiveSessionDelegate {
-    func liveSession(_ session: LFLiveSession?, debugInfo: LFLiveDebug?) {
-        print("[DEBUG]", debugInfo)
-    }
-    
-    func liveSession(_ session: LFLiveSession?, liveStateDidChange state: LFLiveState) {
-        print("[STATE CHANGE]", state.rawValue)
-        
     }
 }
 
