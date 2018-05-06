@@ -9,80 +9,67 @@
 import Foundation
 import AVFoundation
 import HaishinKit
+import LFLiveKit
 
-class HaishinStreamer {
-    var session: AVAudioSession
-    var rtmpConnection: RTMPConnection
-    var rtmpStream: RTMPStream
-    var position: AVCaptureDevice.Position = .front {
-        didSet {
-            changeCamera(position)
-        }
+@objc class LVLiveStreamer: NSObject {
+    var session: LFLiveSession!
+
+    var streamInfo: LFLiveStreamInfo {
+        let info = LFLiveStreamInfo()
+
+        let key = String.random(length: 2)
+
+        print("[STREAM] key =", key)
+        info.url = "rtmp://phystech.tv/sources/\(key)"
+        return info
     }
-    
-    init(av_session: AVAudioSession = AVAudioSession.sharedInstance()) {
-        do {
-            session = av_session
 
-            try session.setPreferredSampleRate(44_100)
-            try session.setCategory(AVAudioSessionCategoryPlayAndRecord, with: .allowBluetooth)
-            try session.setMode(AVAudioSessionModeDefault)
-            try session.setActive(true)
-        } catch {}
+    override init() {
+        super.init()
+
+        let audioConfiguration = LFLiveAudioConfiguration()
+        audioConfiguration.numberOfChannels = 2
+        audioConfiguration.audioBitrate = ._128Kbps
+        audioConfiguration.audioSampleRate = ._44100Hz
+
+        let videoConfiguration = LFLiveVideoConfiguration()
+        videoConfiguration.videoSize = CGSize(width: 1280, height: 720)
+        videoConfiguration.videoBitRate = 1000*1024
+        videoConfiguration.videoMaxBitRate = 3000*1024
+        videoConfiguration.videoMinBitRate = 500*1024
+        videoConfiguration.videoFrameRate = 30
+        videoConfiguration.videoMaxKeyframeInterval = 30
+        videoConfiguration.outputImageOrientation = .landscapeLeft
+        videoConfiguration.sessionPreset = .captureSessionPreset720x1280
         
-        rtmpConnection = RTMPConnection()
-        rtmpStream = RTMPStream(connection: rtmpConnection)
-    }
-    
-    func getStreamView(frame: CGRect) -> UIView {
-        let lfView: LFView = LFView(frame: frame)
-        lfView.videoGravity = .resizeAspect
-        lfView.attachStream(rtmpStream)
-        
-        return lfView
-    }
-    
-    func switchCamera() {
-        position = position == .front ? .back : .front
-    }
-    
-    func changeCamera(_ position: AVCaptureDevice.Position) {
-        let camera = DeviceUtil.device(withPosition: position)
-
-        rtmpStream.attachCamera(camera) { error in
-            print(error)
-        }
+        session = LFLiveSession(audioConfiguration: audioConfiguration, videoConfiguration: videoConfiguration, captureType: .captureMaskAll)
+        session.delegate = self
     }
     
     func stream() {
-        let audio = AVCaptureDevice.default(for: AVMediaType.audio)
-        let camera = DeviceUtil.device(withPosition: position)
+        session.running = true
+//        session.preView = UIView()
         
-        rtmpStream.attachAudio(audio) { error in
-             print(error)
-        }
-        
-        rtmpStream.attachCamera(camera) { error in
-             print(error)
-        }
+        session.startLive(streamInfo)
+    }
+    
+    func stop() {
+        session.stopLive()
+    }
+    
+    func getStreamView(frame: CGRect) -> UIView {
+        return session.preView
+    }
+}
 
-//        rtmpStream.videoSettings = [
-//            "width" : 1280, "height" : 720,
-//            "bitrate" : 500_000
-//        ]
-
-        rtmpStream.captureSettings = [
-            "sessionPreset": AVCaptureSession.Preset.hd1280x720
-        ]
-
-        rtmpStream.orientation = .landscapeLeft
-        rtmpStream.syncOrientation = true
-        rtmpConnection.connect("rtmp://phystech.tv/sources")
+extension LVLiveStreamer: LFLiveSessionDelegate {
+    func liveSession(_ session: LFLiveSession?, debugInfo: LFLiveDebug?) {
+        print("[DEBUG]", debugInfo)
+    }
+    
+    func liveSession(_ session: LFLiveSession?, liveStateDidChange state: LFLiveState) {
+        print("[STATE CHANGE]", state.rawValue)
         
-        let key = String.random(length: 2)
-        
-        print("stream key =", key)
-        rtmpStream.publish( key )
     }
 }
 
