@@ -5,6 +5,7 @@ target 'Camera' do
 
   # Pods for Camera
   pod 'HaishinKit', '~> 0.8.8'
+  pod 'LFLiveKit'
 
   target 'CameraTests' do
     inherit! :search_paths

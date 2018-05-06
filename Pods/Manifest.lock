@@ -1,20 +1,24 @@
 PODS:
   - HaishinKit (0.8.8):
     - Logboard (~> 1.1.2)
+  - LFLiveKit (2.6)
   - Logboard (1.1.5)
 
 DEPENDENCIES:
   - HaishinKit (~> 0.8.8)
+  - LFLiveKit
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - HaishinKit
+    - LFLiveKit
     - Logboard
 
 SPEC CHECKSUMS:
   HaishinKit: 3f0079a56625050ea7f42af292ae9c554ff4872f
+  LFLiveKit: 2219563721f8aa0f188effc3395a06e2d53b23f2
   Logboard: 1d82e88cc1e431d3854952d360f3996028dccd58
 
-PODFILE CHECKSUM: cbb5a8614bc143269118c2116fd41407c64471a5
+PODFILE CHECKSUM: fbe527d27ed4302481e7703f09171a2922045fbf
 
 COCOAPODS: 1.5.0
