@@ -69,11 +69,11 @@ class ViewController: UIViewController {
     
     func updateButton() {
         if isStreaming {
-            currentStreamButton.setTitle("Stop", for: .normal)
+            currentStreamButton.setTitle("stop", for: .normal)
         } else {
-            currentStreamButton.setTitle("Stream", for: .normal)
+            stream1.setTitle("cam1", for: .normal)
+            stream2.setTitle("cam2", for: .normal)
         }
-        
     }
 }
 
