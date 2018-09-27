@@ -29,10 +29,10 @@ import LFLiveKit
 
         let videoConfiguration = LFLiveVideoConfiguration()
         videoConfiguration.videoSize = CGSize(width: 1280, height: 720)
-        videoConfiguration.videoBitRate = 1000*1024
+        videoConfiguration.videoBitRate = 600*1024
         videoConfiguration.videoMaxBitRate = 3000*1024
-        videoConfiguration.videoMinBitRate = 500*1024
-        videoConfiguration.videoFrameRate = 30
+        videoConfiguration.videoMinBitRate = 200*1024
+        videoConfiguration.videoFrameRate = 25
         videoConfiguration.videoMaxKeyframeInterval = 30
         videoConfiguration.outputImageOrientation = .landscapeLeft
         videoConfiguration.sessionPreset = .captureSessionPreset720x1280
